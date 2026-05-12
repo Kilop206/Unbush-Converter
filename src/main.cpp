@@ -1,4 +1,8 @@
 #include <stdexcept>
+#include <vector>
+#include <utility>
+#include <string>
+#include <iostream>
 
 #include "csv_parser.hpp"
 #include "json_writer.hpp"
@@ -13,8 +17,12 @@ int main(int argc, char* argv[])
     }
 
     CsvParser parser;
+    std::vector<
+        std::vector<
+            std::pair<
+                std::string, std::string>>>
+    csv_file = parser.parse(argv[1]);
 
-    
-
+    std::cout << "Funcionou\n";
     return 0;
 }

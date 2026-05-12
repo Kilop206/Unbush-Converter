@@ -2,5 +2,7 @@
 
 namespace unbush
 {
+    JsonWriter::JsonWriter() = default;
 
+    JsonWriter::~JsonWriter() = default;
 }

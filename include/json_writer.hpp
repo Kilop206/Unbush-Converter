@@ -5,7 +5,7 @@ namespace unbush
     class JsonWriter
     {
         public:
-        JsonWriter() = default;
-        ~JsonWriter() = default;
+        JsonWriter();
+        ~JsonWriter();
     };
 }
