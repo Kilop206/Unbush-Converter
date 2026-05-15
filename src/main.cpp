@@ -1,6 +1,5 @@
 #include <stdexcept>
 #include <vector>
-#include <utility>
 #include <string>
 #include <iostream>
 
@@ -19,10 +18,11 @@ int main(int argc, char* argv[])
     CsvParser parser;
     std::vector<
         std::vector<
-            std::pair<
-                std::string, std::string>>>
+            std::string>>
     csv_file = parser.parse(argv[1]);
 
-    std::cout << "Funcionou\n";
+    JsonWriter writer;
+    writer.write(csv_file);
+
     return 0;
 }

@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <vector>
 
 namespace unbush
 {
@@ -7,5 +9,7 @@ namespace unbush
         public:
         JsonWriter();
         ~JsonWriter();
+
+        void write(std::vector<std::vector<std::string>> csv_file);
     };
 }
