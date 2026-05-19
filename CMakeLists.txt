@@ -13,6 +13,8 @@ add_executable(UnbushConverter
         parser/csv_parser.cpp
 
         writer/json_writer.cpp
+        utils/file_utils.hpp
+        utils/file_utils.cpp
 )
 
 target_include_directories(

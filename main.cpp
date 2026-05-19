@@ -3,34 +3,55 @@
 #include "core/parser_factory.hpp"
 #include "core/writer_factory.hpp"
 
+#include "utils/file_utils.hpp"
+
 int main()
 {
+    std::string input =
+        "data/input.csv";
+
+    std::string output =
+        "output/result.json";
+
+    if (!unbush::file_exists(input))
+    {
+        std::cerr
+            << "Arquivo não encontrado\n";
+
+        return 1;
+    }
+
     auto parser =
-        unbush::ParserFactory::create("csv");
+        unbush::ParserFactory::create(
+            unbush::get_extension(input));
 
     if (!parser)
     {
-        std::cerr << "Parser inválido\n";
+        std::cerr
+            << "Parser inválido\n";
+
+        return 1;
+    }
+
+    auto writer =
+        unbush::WriterFactory::create(
+            unbush::get_extension(output));
+
+    if (!writer)
+    {
+        std::cerr
+            << "Writer inválido\n";
+
         return 1;
     }
 
     auto table =
-        parser->parse("data/input.csv");
+        parser->parse(input);
 
-    auto writer =
-        unbush::WriterFactory::create("json");
+    writer->write(table, output);
 
-    if (!writer)
-    {
-        std::cerr << "Writer inválido\n";
-        return 1;
-    }
-
-    writer->write(
-        table,
-        "output/result.json");
-
-    std::cout << "Conversão concluída\n";
+    std::cout
+        << "Conversão concluída\n";
 
     return 0;
 }
